@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-side">
+            <img src="images/login.jpg" alt="Login Image">
+        </div>
+        <div class="right-side">
+            <div class="login-box">
+                <img src="images/logo.png" alt="Logo" class="logo">
+                <h1>Register</h1>
+                <form action="register.php" method="POST" id="register-form" onsubmit="handleRegister(event)">
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="text" name="registration_number" id="registration_number"
+                        placeholder="Registration Number" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <div class="puzzle">
+                        <input type="text" id="puzzle-answer" placeholder="Solve the puzzle" required
+                            style="width: 380px;">
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+                <div id="error-message" class="error-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let puzzleAnswer;
+
+        function generatePuzzle() {
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            puzzleAnswer = num1 + num2;
+            document.getElementById('puzzle-answer').placeholder = `${num1} + ${num2} = ?`;
+        }
+
+        function handleRegister(event) {
+            const email = document.getElementById('email').value;
+            const registration_number = document.getElementById('registration_number').value;
+            const password = document.getElementById('password').value;
+            const puzzleInput = document.getElementById('puzzle-answer').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Email validation
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@gitam\.(in|edu)$/;
+            if (!emailPattern.test(email)) {
+                errorMessage.innerText = 'Email must be @gitam.in or @gitam.edu';
+                event.preventDefault();
+                return;
+            }
+
+            // Password validation
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                errorMessage.innerText = 'Password must be at least 8 characters long and include a mix of capital letters, numbers, and special characters.';
+                event.preventDefault();
+                return;
+            }
+
+            // Puzzle validation
+            if (parseInt(puzzleInput) !== puzzleAnswer) {
+                errorMessage.innerText = 'Incorrect puzzle answer. Please try again.';
+                event.preventDefault();
+                generatePuzzle(); // Regenerate puzzle on wrong answer
+                return;
+            }
+        }
+
+        window.onload = generatePuzzle;
+    </script>
+</body>
+
+</html>

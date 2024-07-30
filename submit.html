@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Review</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>Course Critic</h2>
+        <a href="home.php"><i class="fas fa-tachometer-alt"></i>&nbsp&nbsp Dashboard</a>
+        <a href="courses.php"><i class="fas fa-book"></i>&nbsp&nbsp Courses</a>
+        <a href="submit.html"><i class="fas fa-edit"></i>&nbsp&nbsp Submit a Review</a>
+        <a href="compare.php"><i class="fas fa-balance-scale"></i>&nbsp&nbsp Compare</a>
+    </div>
+    <div class="content">
+        <div class="container">
+            <h1>Submit a Review</h1>
+            <form id="review-form" action="submit.php" method="post">
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="course-name">Course Name:</label>
+                        <input type="text" id="course-name" name="course-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-code">Course Code:</label>
+                        <input type="text" id="course-code" name="course-code" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="professor-name">Professor Name:</label>
+                    <input type="text" id="professor-name" name="professor-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="overall-rating">Overall Rating:</label>
+                    <div class="stars">
+                        <input type="radio" id="star5" name="overall-rating" value="5" required><label for="star5"
+                            title="5 stars"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star4" name="overall-rating" value="4"><label for="star4"
+                            title="4 stars"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star3" name="overall-rating" value="3"><label for="star3"
+                            title="3 stars"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star2" name="overall-rating" value="2"><label for="star2"
+                            title="2 stars"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star1" name="overall-rating" value="1"><label for="star1"
+                            title="1 star"><i class="fas fa-star"></i></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="workload-rating">Workload Rating:</label>
+                    <select id="workload-rating" name="workload-rating" required>
+                        <option value="1">1 - Very Light</option>
+                        <option value="2">2 - Light</option>
+                        <option value="3">3 - Moderate</option>
+                        <option value="4">4 - Heavy</option>
+                        <option value="5">5 - Very Heavy</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="difficulty-rating">Difficulty Rating:</label>
+                    <select id="difficulty-rating" name="difficulty-rating" required>
+                        <option value="1">1 - Very Easy</option>
+                        <option value="2">2 - Easy</option>
+                        <option value="3">3 - Moderate</option>
+                        <option value="4">4 - Hard</option>
+                        <option value="5">5 - Very Hard</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="review">Write a Review:</label>
+                    <textarea id="review" name="review" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script src="submit.js"></script>
+</body>
+
+</html>
